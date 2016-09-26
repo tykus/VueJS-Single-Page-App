@@ -13457,7 +13457,7 @@ _vue2.default.use(_vueRouter2.default);
 
 var router = new _vueRouter2.default();
 
-router.start(_App2.default, '#app');
+router.start(_App2.default, 'app');
 
 },{"./components/App.vue":5,"vue":4,"vue-router":3}]},{},[6]);
 

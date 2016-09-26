@@ -6,4 +6,4 @@ Vue.use(Router);
 
 var router = new Router();
 
-router.start(App, '#app');
+router.start(App, 'app');
