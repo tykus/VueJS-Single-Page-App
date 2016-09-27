@@ -3,7 +3,8 @@ const elixir = require('laravel-elixir');
 require('laravel-elixir-vue');
 require('laravel-elixir-vueify');
 require('laravel-elixir-browserify-official');
-
+require('laravel-elixir-livereload');
+ 
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -17,6 +18,7 @@ require('laravel-elixir-browserify-official');
 
 elixir(mix => {
     mix.browserify('main.js')
+       .livereload()
        .styles([
           './node_modules/normalize.css/normalize.css'
        ]);
