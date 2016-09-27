@@ -12,7 +12,7 @@
     <div class="Topic__stats">
       <span class="Topic__views">
         <span class="Topic__stat-number">
-          {{ topic.views }}
+          {{ topic.views | largeNumber }}
         </span>
         <small class="Topic__stat-label">
           Views

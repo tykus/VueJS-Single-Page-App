@@ -7,11 +7,12 @@ import Category from './components/Category.vue';
 import CategoryView from './components/CategoryView.vue';
 import HomeView from './components/HomeView.vue';
 
-import {fromNow} from './filters/index';
+import {fromNow, largeNumber} from './filters/index';
 
 Vue.use(Router);
 Vue.use(Resource);
 Vue.filter('fromNow', fromNow);
+Vue.filter('largeNumber', largeNumber);
 
 var router = new Router({
   history: true

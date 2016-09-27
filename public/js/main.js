@@ -19342,7 +19342,7 @@ exports.default = {
   props: ['topic']
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"Topic\">\n  <div class=\"Topic__main\">\n    <a class=\"Topic__title\">\n      {{ topic.title }}\n    </a>\n    <div class=\"Topic__meta\">\n      <span class=\"Topic__author\">by Foo</span>\n      <span class=\"Topic__time\">{{ topic.time | fromNow }}</span>\n    </div>\n  </div>\n  <div class=\"Topic__stats\">\n    <span class=\"Topic__views\">\n      <span class=\"Topic__stat-number\">\n        {{ topic.views }}\n      </span>\n      <small class=\"Topic__stat-label\">\n        Views\n      </small>\n    </span>\n    <span class=\"Topic__comments\">\n      <span class=\"Topic__stat-number\">\n        6\n      </span>\n      <small class=\"Topic__stat-label\">\n        Replies\n      </small>\n    </span>\n  </div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"Topic\">\n  <div class=\"Topic__main\">\n    <a class=\"Topic__title\">\n      {{ topic.title }}\n    </a>\n    <div class=\"Topic__meta\">\n      <span class=\"Topic__author\">by Foo</span>\n      <span class=\"Topic__time\">{{ topic.time | fromNow }}</span>\n    </div>\n  </div>\n  <div class=\"Topic__stats\">\n    <span class=\"Topic__views\">\n      <span class=\"Topic__stat-number\">\n        {{ topic.views | largeNumber }}\n      </span>\n      <small class=\"Topic__stat-label\">\n        Views\n      </small>\n    </span>\n    <span class=\"Topic__comments\">\n      <span class=\"Topic__stat-number\">\n        6\n      </span>\n      <small class=\"Topic__stat-label\">\n        Replies\n      </small>\n    </span>\n  </div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -19361,9 +19361,10 @@ if (module.hot) {(function () {  module.hot.accept()
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.fromNow = fromNow;
+exports.largeNumber = largeNumber;
 
 var _moment = require('moment');
 
@@ -19372,7 +19373,19 @@ var _moment2 = _interopRequireDefault(_moment);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function fromNow(time) {
-  return (0, _moment2.default)(time, 'X').fromNow();
+    return (0, _moment2.default)(time, 'X').fromNow();
+}
+
+function largeNumber(number) {
+    if (number > 999999) {
+        return (number / 1000000).toFixed(1) + 'M';
+    }
+
+    if (number > 999) {
+        return (number / 1000).toFixed(1) + 'k';
+    }
+
+    return number;
 }
 
 },{"moment":1}],14:[function(require,module,exports){
@@ -19413,6 +19426,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _vue2.default.use(_vueRouter2.default);
 _vue2.default.use(_vueResource2.default);
 _vue2.default.filter('fromNow', _index.fromNow);
+_vue2.default.filter('largeNumber', _index.largeNumber);
 
 var router = new _vueRouter2.default({
   history: true
