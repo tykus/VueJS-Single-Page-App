@@ -4,6 +4,7 @@ import Resource from 'vue-resource';
 
 import App from './components/App.vue';
 import Category from './components/Category.vue';
+import CategoryView from './components/CategoryView.vue';
 import HomeView from './components/HomeView.vue';
 
 Vue.use(Router);
@@ -20,7 +21,7 @@ router.map({
   },
   '/category/:categoryId': {
     name: 'category',
-    component: Category
+    component: CategoryView
   }
 });
 

@@ -15015,6 +15015,51 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _Topic = require('./Topic.vue');
+
+var _Topic2 = _interopRequireDefault(_Topic);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  components: { Topic: _Topic2.default },
+
+  data: function data() {
+    return {
+      topics: []
+    };
+  },
+
+
+  route: {
+    data: function data(transition) {
+      var categoryId = transition.to.params.categoryId;
+
+      return this.$http.get('/api/categories/' + categoryId + '/topics').then(function (data) {
+        return { topics: data.data };
+      });
+    }
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"category-view\">\n  <topic v-for=\"topic in topics\" :topic=\"topic\" track-by=\"id\"></topic>\n</div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-385c2bc7", module.exports)
+  } else {
+    hotAPI.update("_v-385c2bc7", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"./Topic.vue":11,"vue":5,"vue-hot-reload-api":2}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _Category = require('./Category.vue');
 
 var _Category2 = _interopRequireDefault(_Category);
@@ -15049,7 +15094,35 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-084e6eb0", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./Category.vue":8,"vue":5,"vue-hot-reload-api":2}],10:[function(require,module,exports){
+},{"./Category.vue":8,"vue":5,"vue-hot-reload-api":2}],11:[function(require,module,exports){
+var __vueify_insert__ = require("vueify/lib/insert-css")
+var __vueify_style__ = __vueify_insert__.insert(".Topic {\n  margin-bottom: 5px;\n  padding: 20px;\n  border: 1px solid #ddd;\n  border-radius: 1px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Topic__meta {\n  margin-top: 5px;\n  font-size: 14px;\n  font-weight: lighter;\n  color: #999;\n}\n.Topic__main {\n  padding-right: 20px;\n}\n.Topic__time:before {\n  content: '•';\n  margin-right: 5px;\n}\n.Topic__stats {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Topic__title {\n  font-family: \"Roboto\", sans-serif;\n  font-weight: normal;\n  font-size: 18px;\n  text-decoration: none;\n  color: #333;\n}\n.Topic__title:hover {\n  text-decoration: underline;\n}\n")
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+
+  props: ['topic']
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"Topic\">\n  <div class=\"Topic__main\">\n    <a class=\"Topic__title\">\n      {{ topic.title }}\n    </a>\n    <div class=\"Topic__meta\">\n      <span class=\"Topic__author\">by Foo</span>\n      <span class=\"Topic__time\">{{ topic.time }}</span>\n    </div>\n  </div>\n  <div class=\"Topic__stats\">\n    <span class=\"Topic__views\">\n      <span class=\"Topic__stat-number\">\n        {{ topic.views }}\n      </span>\n      <small class=\"Topic__stat-label\">\n        Views\n      </small>\n    </span>\n    <span class=\"Topic__comments\">\n      <span class=\"Topic__stat-number\">\n        6\n      </span>\n      <small class=\"Topic__stat-label\">\n        Replies\n      </small>\n    </span>\n  </div>\n</div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.dispose(function () {
+    __vueify_insert__.cache[".Topic {\n  margin-bottom: 5px;\n  padding: 20px;\n  border: 1px solid #ddd;\n  border-radius: 1px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Topic__meta {\n  margin-top: 5px;\n  font-size: 14px;\n  font-weight: lighter;\n  color: #999;\n}\n.Topic__main {\n  padding-right: 20px;\n}\n.Topic__time:before {\n  content: '•';\n  margin-right: 5px;\n}\n.Topic__stats {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Topic__title {\n  font-family: \"Roboto\", sans-serif;\n  font-weight: normal;\n  font-size: 18px;\n  text-decoration: none;\n  color: #333;\n}\n.Topic__title:hover {\n  text-decoration: underline;\n}\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-456c0bdb", module.exports)
+  } else {
+    hotAPI.update("_v-456c0bdb", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":5,"vue-hot-reload-api":2,"vueify/lib/insert-css":6}],12:[function(require,module,exports){
 'use strict';
 
 var _vue = require('vue');
@@ -15072,6 +15145,10 @@ var _Category = require('./components/Category.vue');
 
 var _Category2 = _interopRequireDefault(_Category);
 
+var _CategoryView = require('./components/CategoryView.vue');
+
+var _CategoryView2 = _interopRequireDefault(_CategoryView);
+
 var _HomeView = require('./components/HomeView.vue');
 
 var _HomeView2 = _interopRequireDefault(_HomeView);
@@ -15092,7 +15169,7 @@ router.map({
   },
   '/category/:categoryId': {
     name: 'category',
-    component: _Category2.default
+    component: _CategoryView2.default
   }
 });
 
@@ -15102,6 +15179,6 @@ router.redirect({
 
 router.start(_App2.default, 'app');
 
-},{"./components/App.vue":7,"./components/Category.vue":8,"./components/HomeView.vue":9,"vue":5,"vue-resource":3,"vue-router":4}]},{},[10]);
+},{"./components/App.vue":7,"./components/Category.vue":8,"./components/CategoryView.vue":9,"./components/HomeView.vue":10,"vue":5,"vue-resource":3,"vue-router":4}]},{},[12]);
 
 //# sourceMappingURL=main.js.map
