@@ -7,8 +7,11 @@ import Category from './components/Category.vue';
 import CategoryView from './components/CategoryView.vue';
 import HomeView from './components/HomeView.vue';
 
+import {fromNow} from './filters/index';
+
 Vue.use(Router);
 Vue.use(Resource);
+Vue.filter('fromNow', fromNow);
 
 var router = new Router({
   history: true

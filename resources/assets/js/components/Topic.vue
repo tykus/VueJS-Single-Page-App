@@ -6,7 +6,7 @@
       </a>
       <div class="Topic__meta">
         <span class="Topic__author">by Foo</span>
-        <span class="Topic__time">{{ topic.time }}</span>
+        <span class="Topic__time">{{ topic.time | fromNow }}</span>
       </div>
     </div>
     <div class="Topic__stats">
