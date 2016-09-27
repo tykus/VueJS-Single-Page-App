@@ -14982,11 +14982,45 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"vue":5,"vue-hot-reload-api":2,"vueify/lib/insert-css":6}],8:[function(require,module,exports){
+var __vueify_insert__ = require("vueify/lib/insert-css")
+var __vueify_style__ = __vueify_insert__.insert(".Category {\n  margin-bottom: 5px;\n  padding: 20px;\n  border: 1px solid #ddd;\n  border-radius: 1px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Category:hover:before {\n  background: #00bfff;\n}\n.Category:before {\n  content: ' ';\n  width: 5px;\n  height: 40px;\n  background: #dcdcdc;\n  margin-right: 10px;\n}\n.Category__meta {\n  margin-top: 5px;\n  font-size: 14px;\n  font-weight: lighter;\n  color: #999;\n}\n.Category__description:before {\n  display: none;\n}\n.Category__main {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding-right: 20px;\n}\n.Category__stats {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Category__name {\n  font-family: \"Roboto\", sans-serif;\n  font-weight: normal;\n  font-size: 18px;\n  text-decoration: none;\n  color: #333;\n}\n.Category__name:hover {\n  text-decoration: underline;\n}\n")
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = {
+  props: ['category']
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"Category\">\n  <div class=\"Category__main\">\n    <a class=\"Category__name\" v-link=\"{name:'category',params:{ categoryId:category.id }}\">\n      {{ category.name }}\n    </a>\n    <div class=\"Category__meta\">\n      <span class=\"Category__description\">{{ category.description }}</span>\n    </div>\n  </div>\n  <div class=\"Category__stats\">\n    <span>\n      <span class=\"Category__stat-number\">\n        {{ category.numberOfTopics }}\n      </span>\n      <small class=\"Category__stat-label\">\n        Posts\n      </small>\n    </span>\n  </div>\n</div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.dispose(function () {
+    __vueify_insert__.cache[".Category {\n  margin-bottom: 5px;\n  padding: 20px;\n  border: 1px solid #ddd;\n  border-radius: 1px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Category:hover:before {\n  background: #00bfff;\n}\n.Category:before {\n  content: ' ';\n  width: 5px;\n  height: 40px;\n  background: #dcdcdc;\n  margin-right: 10px;\n}\n.Category__meta {\n  margin-top: 5px;\n  font-size: 14px;\n  font-weight: lighter;\n  color: #999;\n}\n.Category__description:before {\n  display: none;\n}\n.Category__main {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding-right: 20px;\n}\n.Category__stats {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.Category__name {\n  font-family: \"Roboto\", sans-serif;\n  font-weight: normal;\n  font-size: 18px;\n  text-decoration: none;\n  color: #333;\n}\n.Category__name:hover {\n  text-decoration: underline;\n}\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-cef526fc", module.exports)
+  } else {
+    hotAPI.update("_v-cef526fc", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":5,"vue-hot-reload-api":2,"vueify/lib/insert-css":6}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Category = require('./Category.vue');
+
+var _Category2 = _interopRequireDefault(_Category);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
   data: function data() {
     return {
@@ -14994,6 +15028,7 @@ exports.default = {
     };
   },
 
+  components: { Category: _Category2.default },
   route: {
     data: function data() {
       return this.$http.get('/api/categories').then(function (data) {
@@ -15003,7 +15038,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"home-view\">\n  This is the homepage.\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"home-view\">\n  <div class=\"categories\">\n    <category v-for=\"category in categories\" :category=\"category\" track-by=\"id\">\n    </category>\n  </div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -15014,7 +15049,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-084e6eb0", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":2}],9:[function(require,module,exports){
+},{"./Category.vue":8,"vue":5,"vue-hot-reload-api":2}],10:[function(require,module,exports){
 'use strict';
 
 var _vue = require('vue');
@@ -15033,6 +15068,10 @@ var _App = require('./components/App.vue');
 
 var _App2 = _interopRequireDefault(_App);
 
+var _Category = require('./components/Category.vue');
+
+var _Category2 = _interopRequireDefault(_Category);
+
 var _HomeView = require('./components/HomeView.vue');
 
 var _HomeView2 = _interopRequireDefault(_HomeView);
@@ -15050,6 +15089,10 @@ router.map({
   '/': {
     name: 'home',
     component: _HomeView2.default
+  },
+  '/category/:categoryId': {
+    name: 'category',
+    component: _Category2.default
   }
 });
 
@@ -15059,6 +15102,6 @@ router.redirect({
 
 router.start(_App2.default, 'app');
 
-},{"./components/App.vue":7,"./components/HomeView.vue":8,"vue":5,"vue-resource":3,"vue-router":4}]},{},[9]);
+},{"./components/App.vue":7,"./components/Category.vue":8,"./components/HomeView.vue":9,"vue":5,"vue-resource":3,"vue-router":4}]},{},[10]);
 
 //# sourceMappingURL=main.js.map
